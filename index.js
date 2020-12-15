@@ -19,16 +19,22 @@ const writeLines = (dataText) => {
     return line;
 }
 
-const write = (addres, name, phone, startCall, endCall, dialstatus) => {
+const write = (arr) => {
     const fs = require("fs");
-    const dataText = `${lengthChanger(name)}\t | ${lengthChanger(phone)}\t | ${lengthChanger(startCall)}\t | ${lengthChanger(endCall)}\t | ${lengthChanger(dialstatus)}\t |\r\n`
-    fs.appendFile(`${addres}.txt`, dataText, function(error){
+    let dataText = '';
+    for (let i=1; i <arr.length; i++){
+        dataText = `${dataText + lengthChanger(arr[i])}\t |`
+    }
+    dataText = `${dataText} \r\n`
+    // const dataText = `${lengthChanger(name)}\t | ${lengthChanger(phone)}\t | ${lengthChanger(startCall)}\t | ${lengthChanger(endCall)}\t | ${lengthChanger(dialstatus)}\t |\r\n`
+    fs.appendFile(`${arr[0]}.txt`, dataText, function(error){
         if(error) throw error; 
     });
-    fs.appendFile(`${addres}.txt`, writeLines(dataText), function(error){
+    fs.appendFile(`${arr[0]}.txt`, writeLines(dataText), function(error){
         if(error) throw error; 
     });
 
 }
 
-write(addres, name, phone, startCall, endCall, dialstatus)
+const arr = process.argv.filter((item,index) => index != 0 && index != 1)
+write(arr)

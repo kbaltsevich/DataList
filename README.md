@@ -1,6 +1,6 @@
 # Data list creater
 
-for Saterisk alarm system
+for Asterisk alarm system
 
 Like this:
 

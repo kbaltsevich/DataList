@@ -20,6 +20,9 @@ const writeLines = (dataText) => {
 }
 
 const write = (arr) => {
+    if(!arr.length) {
+        return console.log('no arguments')
+    }
     const fs = require("fs");
     let dataText = '';
     for (let i=1; i <arr.length; i++){
